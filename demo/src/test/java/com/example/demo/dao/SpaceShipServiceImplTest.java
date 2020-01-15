@@ -37,7 +37,6 @@ public class SpaceShipServiceImplTest {
 		spaceShips.setSpaceShips(ships);
 		Mockito.when(restOperations.getForObject(eq("url"), eq(SpaceShips.class))).thenReturn(spaceShips);
 		assertEquals(ships, spaceShipServiceImpl.retreiveSpaceShips());
-		Mockito.verify(restOperations);
 	}
 
 	@Test
@@ -45,7 +44,6 @@ public class SpaceShipServiceImplTest {
 		SpaceShips spaceShips = null;
 		Mockito.when(restOperations.getForObject(eq("url"), eq(SpaceShips.class))).thenReturn(spaceShips);
 		assertThrows(SpaceShipServiceException.class, () -> spaceShipServiceImpl.retreiveSpaceShips());
-		Mockito.verify(restOperations);
 	}
 	
 	@Test
@@ -53,6 +51,5 @@ public class SpaceShipServiceImplTest {
 		SpaceShips spaceShips = new SpaceShips();
 		Mockito.when(restOperations.getForObject(eq("url"), eq(SpaceShips.class))).thenReturn(spaceShips);
 		assertThrows(SpaceShipServiceException.class, () -> spaceShipServiceImpl.retreiveSpaceShips());
-		Mockito.verify(restOperations);
 	}
 }

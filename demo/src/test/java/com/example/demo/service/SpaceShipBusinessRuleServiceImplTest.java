@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -27,5 +29,9 @@ public class SpaceShipBusinessRuleServiceImplTest {
 		spaceShipKnown.setCost("1234");
 		spaceShips.add(spaceShipKnown);
 		
+		spaceShipBusinessRuleServiceImpl.execute(spaceShips);
+		
+		assertEquals("10000", spaceShipUnknown.getCost());
+		assertEquals("1234", spaceShipKnown.getCost());
 	}
 }

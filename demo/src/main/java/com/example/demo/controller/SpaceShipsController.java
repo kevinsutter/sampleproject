@@ -15,6 +15,14 @@ import com.example.demo.service.SpaceShipBusinessRuleService;
 @RequestMapping(value = "/SpaceShips")
 public class SpaceShipsController {
 	
+	public SpaceShipsController() {
+	}
+	
+	public SpaceShipsController(SpaceShipBusinessRuleService spaceShipBusinessRuleService, SpaceShipService spaceShipService) {
+		this.spaceShipBusinessRuleService = spaceShipBusinessRuleService;
+		this.spaceShipService = spaceShipService;
+	}
+	
 	@Autowired
 	private SpaceShipBusinessRuleService spaceShipBusinessRuleService;
 

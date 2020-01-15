@@ -12,7 +12,6 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,7 +27,8 @@ public class Configuration {
 					@Override
 					public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution)
 							throws IOException {
-						request.getHeaders().set("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+						request.getHeaders().set("user-agent", "Mozilla/5.0");
+						request.getHeaders().set("accept", "application/json");
 			            return execution.execute(request, body);
 					}
 				}).build();
@@ -36,11 +36,12 @@ public class Configuration {
 	
 	@Bean
     public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurerAdapter() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**");
-            }
+        return new WebMvcConfigurer() {
+        	 @Override
+             public void addCorsMappings(CorsRegistry registry) {
+                 registry.addMapping("/**");
+             }
+        
         };
     }
 }

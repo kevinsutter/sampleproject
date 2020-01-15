@@ -10,11 +10,14 @@ import com.example.demo.model.SpaceShip;
 
 @Service
 public class SpaceShipBusinessRuleServiceImpl implements SpaceShipBusinessRuleService{
-	@Value("matchOn")
+	@Value("${matchOn}")
 	private String matchOn;
 	
-	@Value("defaultCost")
+	@Value("${defaultCost}")
 	private String defaultCost;
+	
+	public SpaceShipBusinessRuleServiceImpl() {
+	}
 	
 	public SpaceShipBusinessRuleServiceImpl(String matchOn, String defaultCost) {
 		this.defaultCost = defaultCost;
