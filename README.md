@@ -1,3 +1,3 @@
 # sampleproject
-Demo is a Java Spring boot app
-DemoApp is a Angular app
+# Demo is a Java Spring boot app
+# DemoApp is a Angular app
